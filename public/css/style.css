@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around   ;
+    align-items: center;
+    flex-direction: column;
+}
+.form_style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.centerThisDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+}
