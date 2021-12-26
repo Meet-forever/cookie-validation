@@ -1,4 +1,4 @@
-<h1>Cookie Validator</h1>
+<h1>Cookie Validation</h1>
 
 <h2>Main Page</h2>
 <p>When a user opens the website, they will see the page on the left side. Notice, currently the browser dosen't have any cookie.</p>
