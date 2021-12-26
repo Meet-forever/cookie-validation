@@ -31,7 +31,7 @@
 docker pull meetnpatel/cookievalidator
 ```
 
-<p>Instruction for running the above docker image:</p>
+<p>Few instructions for running the above docker image:</p>
 
 - Port number must be the same for both host and container to run the website successfully.
 -  Also, to run the website on a custom port an environment variable PORT will be required.
