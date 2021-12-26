@@ -21,11 +21,87 @@
                 <button type="submit">Submit</button>
             </form> 
         </div>
-        <div>
-            <pre>
-    It works
-            </pre>
-        </div>  
     </div>   
+        <div class="container">
+        <div class="centerThisDiv">
+            <p>
+                When a user presses the signin button, their link gets redirected to the following function.
+                The following function captures the GET request, and it renders the user's view page to the sign in page, which was stored on the server.
+                But, why are we using "authenticated" as a middleware? Its explaination is written below.
+            </p>
+            <pre>
+app.get('/signin', authenticated, (req, res)=>{
+    res.render('signin');
+})
+            </pre> 
+        </div>
+        <div class="centerThisDiv">
+            <p>
+                Authenticated function checks if a user already has a authentication cookie, and if they have, then it checks if it's valid by parsing the database. 
+                This method is mostly used to make user experience better. Suppose, you closed your browser and want to access this site again, then this stie will remember
+                you till your cookie expires, and you will be able to access this site again without any sign in intruption.
+            </p>
+            <pre>
+//If user is authenticated
+function authenticated(req, res, next){
+    const {cookies}  = req;
+    if("remember_me" in cookies){
+        if(data.find(x => cookies.remember_me === x.cookie)) res.redirect('/home');
+        else next();
+    }
+    else next();
+}        
+            </pre> 
+        </div>
+            <div class="centerThisDiv">
+                <p>
+                    When a existing user submits the above form, their link gets redirected to the following function.
+                    The following function captures the POST request, and it stores the cookie inside existing user's browser and their data object.
+                </p>
+                <pre>
+app.post('/signin', validate,(req, res)=>{
+    if(data.find(x => x.username === req.body.username 
+        && x.password === req.body.password))
+        {
+            data = data.map(x =>{
+            if(x.username === req.body.username 
+                && x.password === req.body.password)
+                {
+                    const uuid = randomUUID();                
+                    res.cookie('remember_me',uuid, {
+                        maxAge: 1000 * 60  
+                    });
+                    return (
+                        {
+                            ...x,
+                            cookie: uuid 
+                        }   
+                    )
+                }
+            else return x;
+        })
+        res.redirect('home')
+    }
+    else res.status(400).send("User Does Not Exist!");  
+})
+</pre> 
+</div>
+            <div class="centerThisDiv">
+                <p>
+    The following fucntion validates the input values for the username and password.It also helps to prevent xxs attacks. 
+                </p>
+                <pre>
+//Form validation function
+function validate(req, res, next){
+    const user_pattern = /^[a-zA-Z0-9_]*$/g;
+    const password_pattern = /^[a-zA-Z0-9@%!]*$/g;
+    if(req.body.username && req.body.password
+        && req.body.username.length &lt; 10 && req.body.password.length &lt; 15 
+        && user_pattern.test(req.body.username) && password_pattern.test(req.body.password)) next();
+    else res.status(415).send("Invalid Format");
+} 
+                </pre> 
+            </div>
+    </div>
 </body>
 </html>
