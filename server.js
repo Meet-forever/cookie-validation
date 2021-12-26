@@ -79,7 +79,7 @@ app.post('/signup', validate, (req, res)=>{
     data.push(obj)
     setTimeout(()=>{
         data.pop(obj);
-    }, 60000)
+    }, 120000)
     res.redirect('/signin');
 })
 
