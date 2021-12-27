@@ -1,17 +1,21 @@
 <h1>Cookie Validation</h1>
 
+<h2>Site Flow</h2>
+
+![](images/siteflow.png)
+
 <h2>Main Page</h2>
-<p>When a user opens the website, they will see the page on the left side. Notice, currently the browser dosen't have any cookie.</p>
+<p>When a user opens the website, they will see the page on the left side. Notice, currently the browser dosen't have any cookie on it.</p>
 
 ![](images/page1.png)
 
 <h2>Sign Up Page</h2>
-<p>The user will go to sign up page, and they will register their account. This will store the data in the database.</p>
+<p>The user will go to sign up page, and they will register their account. This will store the data into the database.</p>
 
 ![](images/page2.png)
 
 <h2>Sign In Page</h2>
-<p>After that, the user will be redirected to the sign in page, and they will fill up their credentials. This will parse the database to check if the user exists, and if they exists, then add cookie and redirect the user to home page.</p>
+<p>After that, the user will be redirected to the sign in page, and they will fill up their credentials. This will parse the database to check if the user exists, and if they exists, then add cookie and redirect the user to the home page.</p>
 
 ![](images/page3.png)
 
@@ -20,7 +24,9 @@
 
 ![](images/page4.png)
 
-<p>Note: This will clear the cookie after one minute and user's data after two minutes.</p>
+<p>Note: This will clear the cookie after one minute and user's data after two minutes.
+</p>
+
 <br />
 
 ## Docker Image
@@ -31,7 +37,7 @@
 docker pull meetnpatel/cookievalidator
 ```
 
-<p>Instruction for running the above docker image:</p>
+<p>Few instructions for running the above docker image:</p>
 
 - Port number must be the same for both host and container to run the website successfully.
 -  Also, to run the website on a custom port an environment variable PORT will be required.
